@@ -13,7 +13,7 @@ export class LoginController {
      * @param res - Objeto de respuesta de Express.
      * @returns Una respuesta JSON que contiene el resultado del inicio de sesión.
      */
-    login = async (req: Request, res: Response): Promise<void> => {
+    async login(req: Request, res: Response): Promise<void> {
         try {
             const { email, password } = req.body;
 
