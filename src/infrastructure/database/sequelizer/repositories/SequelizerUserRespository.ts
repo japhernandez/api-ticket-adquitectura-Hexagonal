@@ -1,6 +1,6 @@
-import { User } from "@/domain/User/User";
+import { User } from "../../../../domain/User/User";
 import { UserModel } from "../models/User.model";
-import { UserRepository } from "@/domain/User/UserRespository";
+import { UserRepository } from "../../../../domain/User/UserRespository";
 
 
 /**
@@ -15,6 +15,11 @@ export class SequelizeUserRepository implements UserRepository {
      */
     async findByEmail(email: string): Promise<User | null> {
         const user = await UserModel.findOne({ where: { email } });
+        return user ? this.mapUserModelToUser(user) : null;
+    }
+
+    async findByUsername(username: string): Promise<User | null> {
+        const user = await UserModel.findOne({ where: { username } });
         return user ? this.mapUserModelToUser(user) : null;
     }
 

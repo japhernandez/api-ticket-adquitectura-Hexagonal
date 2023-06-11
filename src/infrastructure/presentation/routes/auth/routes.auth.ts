@@ -1,11 +1,12 @@
 import { Router } from 'express';
+import { AuthLogin, AuthRegister } from '../../../dependencies/auth/auth.dependencies';
+
+const AuthRoute = Router();
 
 
-const routes = Router();
+AuthRoute
+    .post("/auth/register", AuthRegister.register)
+    .post("/auth/login", AuthLogin.login)
 
 
-routes
-    .post("/auth/register", );
-// Agrega otras rutas y controladores aquí
-
-export default routes;
+export default AuthRoute;

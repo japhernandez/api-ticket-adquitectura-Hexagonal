@@ -1,18 +1,20 @@
+import { autoInjectable } from 'tsyringe';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import { User } from '@/domain/User/User';
-import { UserRepository } from '@/domain/User/UserRespository';
-import { CustomError } from '@/domain/errors/CustomError';
+import { User } from '../../domain/User/User';
+import { SequelizeUserRepository } from '../../infrastructure/database/sequelizer/repositories/SequelizerUserRespository';
+import { CustomError } from '../../domain/errors/CustomError';
 
 /**
  * Clase que representa el servicio de inicio de sesión.
  */
+@autoInjectable()
 export class LoginService {
   /**
    * Constructor de la clase LoginService.
    * @param userRepository Repositorio de usuarios.
    */
-  constructor(private userRepository: UserRepository) { }
+  constructor(private userRepository: SequelizeUserRepository) { }
 
   /**
    * Método asincrónico para realizar el inicio de sesión.
