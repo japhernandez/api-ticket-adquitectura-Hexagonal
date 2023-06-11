@@ -1,4 +1,3 @@
-import { autoInjectable } from "tsyringe";
 import { User } from "@/domain/User/User";
 import { UserRepository } from "@/domain/User/UserRespository";
 import { CustomError } from "@/domain/errors/CustomError";
@@ -6,7 +5,7 @@ import { CustomError } from "@/domain/errors/CustomError";
 /**
  * Servicio de registro de usuarios.
  */
-@autoInjectable()
+
 export class RegisterService {
     constructor(private userRepository: UserRepository) { }
 
