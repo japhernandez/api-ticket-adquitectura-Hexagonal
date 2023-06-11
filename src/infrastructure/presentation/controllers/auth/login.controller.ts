@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { LoginService } from '@/application/auth/login.services';
-
+import { CustomError } from '@/domain/errors/CustomError';
 /**
  * Controlador para manejar la solicitud de inicio de sesión.
  */
@@ -22,9 +22,13 @@ export class LoginController {
 
             // Enviar una respuesta exitosa con el usuario y el token de JWT
             this.sendSuccessResponse(res, 'Login successful', { user, token });
-        } catch (error) {
-            console.error(error);
-            this.sendErrorResponse(res, 401, 'Invalid email or password');
+        } catch (err) {
+            console.error(err);
+            if (err instanceof CustomError) {
+                this.sendErrorResponse(res, err.statusCode, err.message);
+            } else {
+                this.sendErrorResponse(res, 500, "failed to login");
+            }
         }
     }
 

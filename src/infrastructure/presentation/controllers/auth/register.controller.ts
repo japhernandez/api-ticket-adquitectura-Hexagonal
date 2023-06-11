@@ -1,6 +1,6 @@
 import { Response, Request } from "express";
 import { RegisterService } from "@/application/auth/register.services";
-
+import { CustomError } from "@/domain/errors/CustomError";
 /**
  * Controlador para el registro de usuarios.
  */
@@ -19,7 +19,11 @@ export class RegisterController {
             this.sendSuccessResponse(res, "Successfully registered");
         } catch (err) {
             console.log(err);
-            this.sendErrorResponse(res, 500, "Error while registering");
+            if (err instanceof CustomError) {
+                this.sendErrorResponse(res, err.statusCode, err.message);
+            } else {
+                this.sendErrorResponse(res, 500, "Error while registering");
+            }
         }
     }
 
