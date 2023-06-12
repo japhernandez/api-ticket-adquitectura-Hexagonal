@@ -1,11 +1,10 @@
-import { autoInjectable } from 'tsyringe';
 import { Response, Request } from "express";
-import { RegisterService } from '../../../../application/auth/register.services';
+import { RegisterService } from "../../../../application/auth/register.services";
 import { CustomError } from '../../../../domain/errors/CustomError';
 /**
  * Controlador para el registro de usuarios.
  */
-@autoInjectable()
+
 export class RegisterController {
     constructor(private registerService: RegisterService) { }
 

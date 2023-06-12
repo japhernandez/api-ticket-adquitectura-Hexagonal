@@ -1,11 +1,9 @@
-import { autoInjectable } from "tsyringe"
 import { Request, Response } from 'express';
 import { LoginService } from '../../../../application/auth/login.services';
 import { CustomError } from '../../../../domain/errors/CustomError';
 /**
  * Controlador para manejar la solicitud de inicio de sesión.
  */
-@autoInjectable()
 export class LoginController {
     constructor(private loginService: LoginService) { }
 

@@ -1,11 +1,10 @@
-import { autoInjectable } from 'tsyringe';
 import { User } from '../../domain/User/User';
 import { SequelizeUserRepository } from '../../infrastructure/database/sequelizer/repositories/SequelizerUserRespository';
 import { CustomError } from '../../domain/errors/CustomError';
 /**
  * Servicio de registro de usuarios.
  */
-@autoInjectable()
+
 export class RegisterService {
     constructor(private userRepository: SequelizeUserRepository) { }
 
