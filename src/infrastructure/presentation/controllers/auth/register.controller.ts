@@ -1,12 +1,12 @@
 import { Response, Request } from "express";
 import { RegisterService } from "../../../../application/auth/register.services";
 import { CustomError } from '../../../../domain/errors/CustomError';
+
 /**
  * Controlador para el registro de usuarios.
  */
-
 export class RegisterController {
-    constructor(private registerService: RegisterService) { }
+    constructor(private readonly registerService: RegisterService) { }
 
     /**
      * Registra un nuevo usuario.
@@ -32,9 +32,10 @@ export class RegisterController {
      * Envía una respuesta exitosa al cliente.
      * @param res - Objeto de respuesta de Express.
      * @param message - Mensaje de éxito.
+     * @returns El objeto de respuesta de Express.
      */
-    private sendSuccessResponse(res: Response, message: string): void {
-        res.status(200).json({ message });
+    private sendSuccessResponse(res: Response, message: string): Response {
+        return res.status(200).json({ message });
     }
 
     /**
@@ -42,8 +43,9 @@ export class RegisterController {
      * @param res - Objeto de respuesta de Express.
      * @param statusCode - Código de estado HTTP del error.
      * @param message - Mensaje de error.
+     * @returns El objeto de respuesta de Express.
      */
-    private sendErrorResponse(res: Response, statusCode: number, message: string): void {
-        res.status(statusCode).json({ Error: message });
+    private sendErrorResponse(res: Response, statusCode: number, message: string): Response {
+        return res.status(statusCode).json({ Error: message });
     }
 }

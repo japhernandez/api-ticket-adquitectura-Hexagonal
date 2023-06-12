@@ -6,7 +6,7 @@ import { CustomError } from '../../domain/errors/CustomError';
  */
 
 export class RegisterService {
-    constructor(private userRepository: SequelizeUserRepository) { }
+    constructor(private readonly userRepository: SequelizeUserRepository) { }
 
     /**
      * Registra un nuevo usuario.

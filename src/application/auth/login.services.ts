@@ -13,7 +13,7 @@ export class LoginService {
    * Constructor de la clase LoginService.
    * @param userRepository Repositorio de usuarios.
    */
-  constructor(private userRepository: SequelizeUserRepository) { }
+  constructor(private readonly userRepository: SequelizeUserRepository) { }
 
   /**
    * Método asincrónico para realizar el inicio de sesión.
