@@ -2,7 +2,7 @@ import { Model, DataTypes } from 'sequelize';
 import db from '../../connection';
 import bcrypt from 'bcrypt';
 import { v4 as uuidv4 } from 'uuid';
-
+import { TicketModel } from './Ticket.model';
 
 export interface UserModel extends Model {
     id: string;
