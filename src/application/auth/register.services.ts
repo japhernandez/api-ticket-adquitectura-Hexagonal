@@ -16,7 +16,6 @@ export class RegisterService {
      */
     register = async (user: User): Promise<void> => {
         this.validateUser(user);
-
         await this.checkEmailAvailability(user.email);
         await this.checkUsernameAvailability(user.username);
 
@@ -34,7 +33,6 @@ export class RegisterService {
      */
     private validateUser(user: User): void {
         const { email, password, username, name, lastName, age } = user;
-
         if (!email || !password || !username || !name || !lastName || !age) {
             throw new CustomError(401, "Incomplete user data");
         }

@@ -5,8 +5,8 @@ const AuthRoute = Router();
 
 
 AuthRoute
-    .post("/auth/register", AuthRegister.register)
-    .post("/auth/login", AuthLogin.login)
+    .post("/register", AuthRegister.register)
+    .post("/login", AuthLogin.login)
 
 
 export default AuthRoute;

@@ -1,0 +1,110 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Ticket API",
+    "description": "This project is a ticket API developed in Node.js with TypeScript and Express.js, which utilizes a MySQL database and Sequelize for data management. The hexagonal architecture and SOLID principles are fundamental in its design. The hexagonal architecture separates the application into concentric layers, providing modularity and flexibility. The SOLID principles promote clean, maintainable, and scalable code. Additionally, the API features a user authentication (login) system to ensure security, allowing users to authenticate and access protected resources. In summary, this ticket API utilizes technologies such as Node.js, TypeScript, Express.js, MySQL, and Sequelize, follows a hexagonal architecture and SOLID principles, and includes a login system for secure user management.",
+    "version": "0.1"
+  },
+  "basePath": "/api/v1",
+  "schemes": ["http", "https"],
+  "paths": {
+    "/auth/register": {
+      "post": {
+        "tags": ["Auth User"],
+        "summary": "Register User",
+        "description": "Registers a new user",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "The user registration information",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "tags": ["Auth User"],
+        "summary": "Login User",
+        "description": "Sign in by entering your user credentials",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "The user login credentials",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "format": "email"
+                },
+                "password": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthorized Access"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "User": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "age": {
+          "type": "integer"
+        },
+        "email": {
+          "type": "string",
+          "format": "email"
+        },
+        "password": {
+          "type": "string"
+        }
+      },
+      "required": ["username", "name", "lastName", "email", "password"]
+    }
+  }
+}

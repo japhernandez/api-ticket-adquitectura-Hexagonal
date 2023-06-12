@@ -4,6 +4,9 @@ import morgan from "morgan";
 import cors from "cors";
 import helmet from 'helmet'
 import "reflect-metadata";
+import swaggerUI from 'swagger-ui-express';
+
+
 const app = express();
 import AuthRoute from "./infrastructure/presentation/routes/auth/routes.auth";
 
@@ -17,10 +20,10 @@ app.use(helmet());
 app.use(cors());
 
 /* routes */
-app.set('api/v1/auth/', AuthRoute)
+app.use('/api/v1/auth/', AuthRoute)
 /*swagger Doxumentation */
 
 
-
-
+const swaggerDocument = require('./swagger.json'); // Importing the Swagger documentation file
+app.use('/api-v1-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument)) // Setting up Swagger documentation endpoint
 export default app
