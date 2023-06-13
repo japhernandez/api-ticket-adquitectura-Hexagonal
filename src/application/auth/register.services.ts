@@ -1,6 +1,7 @@
 import { User } from '../../domain/User/User';
 import { SequelizeUserRepository } from '../../infrastructure/database/sequelizer/repositories/SequelizerUserRespository';
 import { CustomError } from '../../domain/errors/CustomError';
+
 /**
  * Servicio de registro de usuarios.
  */
@@ -13,7 +14,7 @@ export class RegisterService {
      * @param user Los datos del usuario a registrar.
      * @throws CustomError si ocurre un error durante el registro.
      */
-    register = async (user: User): Promise<void> => {
+    async register(user: User): Promise<void> {
         this.validateUser(user);
         await this.checkEmailAvailability(user.email);
         await this.checkUsernameAvailability(user.username);
