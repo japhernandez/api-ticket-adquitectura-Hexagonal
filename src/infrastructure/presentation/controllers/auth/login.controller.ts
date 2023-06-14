@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { LoginService } from '../../../../application/auth/login.services';
+import { LoginService } from '../../../../application/auth/login.service';
 import { CustomError } from '../../../../domain/errors/CustomError';
 
 /**

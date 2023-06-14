@@ -1,6 +1,6 @@
 import { Response, Request } from "express";
 import { CustomError } from '../../../../domain/errors/CustomError';
-import { RegisterService } from "../../../../application/auth/register.services";
+import { RegisterService } from "../../../../application/auth/register.service";
 
 /**
  * Controlador para el registro de usuarios.

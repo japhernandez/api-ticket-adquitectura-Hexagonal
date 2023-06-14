@@ -1,6 +1,6 @@
 import * as  awilix from "awilix";
-import { LoginService } from "../../../application/auth/login.services";
-import { RegisterService } from "../../../application/auth/register.services";
+import { LoginService } from "../../../application/auth/login.service";
+import { RegisterService } from "../../../application/auth/register.service";
 import { RegisterController } from "../../presentation/controllers/auth/register.controller";
 import { LoginController } from "../../presentation/controllers/auth/login.controller";
 import { SequelizeUserRepository } from "../../database/sequelizer/repositories/SequelizerUserRespository";
