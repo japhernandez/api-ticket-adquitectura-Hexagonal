@@ -58,3 +58,14 @@ export const UserModel = db.define<UserModel>('users', {
 });
 
 
+UserModel.hasMany(TicketModel, {
+    foreignKey: 'userId',
+    onDelete: 'CASCADE',
+    sourceKey: 'id'
+})
+TicketModel.belongsTo(UserModel, {
+    foreignKey: 'userId',
+    onDelete: 'CASCADE',
+    targetKey: 'id'
+});
+

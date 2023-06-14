@@ -7,8 +7,8 @@ import swaggerUI from 'swagger-ui-express';
 
 
 const app = express();
-import AuthRoute from "./infrastructure/presentation/routes/auth/routes.auth";
-
+import AuthRoutes from "./infrastructure/presentation/routes/auth/routes.auth";
+import TicketManagetRoutes from "./infrastructure/presentation/routes/ticketManager/routes.ticketManager"
 /* settings */
 app.set('port', process.env.PORT || 4000)
 
@@ -19,7 +19,8 @@ app.use(helmet());
 app.use(cors());
 
 /* routes */
-app.use('/api/v1/auth/', AuthRoute)
+app.use('/api/v1/auth/', AuthRoutes)
+app.use('/api/v1/ticketManager/', TicketManagetRoutes);
 /*swagger Doxumentation */
 
 

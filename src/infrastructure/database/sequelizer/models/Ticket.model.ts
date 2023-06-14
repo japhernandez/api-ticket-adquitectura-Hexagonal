@@ -1,5 +1,5 @@
-import db from "../../connection";
-import { Model, DataType, DataTypes } from "sequelize";
+import { Model, DataTypes } from 'sequelize';
+import db from '../../connection';
 import { v4 as uuidv4 } from 'uuid';
 import { UserModel } from "./User.model";
 
@@ -31,8 +31,3 @@ export const TicketModel = db.define<TicketModel>('tickets', {
     }
 })
 
-TicketModel.belongsTo(UserModel, {
-    foreignKey: 'userId',
-    onDelete: 'CASCADE',
-    targetKey: 'id'
-});
