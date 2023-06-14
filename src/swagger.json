@@ -78,6 +78,37 @@
           }
         }
       }
+    },
+    "/ticketManager/createTicket": {
+      "post": {
+        "tags": ["Ticket Manager"],
+        "summary": "Create a ticket",
+        "description": "Registers a new user",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "create new tiket",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Ticket"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -105,6 +136,24 @@
         }
       },
       "required": ["username", "name", "lastName", "email", "password"]
+    },
+    "Ticket": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "x-foreign-key": "users.id"
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        }
+      }
     }
   }
 }
